@@ -1,0 +1,65 @@
+﻿@model Biblioteca.Models.ViewModels.LibroVM
+@{
+    ViewBag.Title = "Nuevo Libro";
+}
+
+<h2 style="margin-top: 100px; margin-bottom: 40px; color: limegreen; font-family: Castellar">@ViewBag.Title</h2>
+
+@using (Html.BeginForm("Nuevo", "Libro", FormMethod.Post))
+{
+    <div class="row">
+        <div class="col-md-12">
+            <div>
+                <label style="color:limegreen;font-family:'Lucida Sans'">
+                    Titulo
+                </label>
+                <label style="color:red;font-family:'Lucida Sans'">
+                     *
+                </label>
+                @Html.TextBoxFor(l => l.Titulo, "", new { @class = "form-control" })
+                @Html.ValidationMessageFor(l => l.Titulo, null, new { @class = "red" })
+            </div>
+            <div>
+                <label style="color:limegreen;font-family:'Lucida Sans'">
+                    Año
+                </label>
+                <label style="color:red;font-family:'Lucida Sans'">
+                    *
+                </label>
+                @Html.TextBoxFor(l => l.Anio, "", new { @class = "form-control" })
+                @Html.ValidationMessageFor(l => l.Anio, null, new { @class = "red" })
+            </div>
+            <div>
+                <label style="color:limegreen;font-family:'Lucida Sans'">
+                    Genero
+                </label>
+                @Html.TextBoxFor(l => l.Genero, "", new { @class = "form-control" })
+            </div>
+            <div>
+                <label style="color:limegreen;font-family:'Lucida Sans'">
+                    Paginas
+                </label>
+                @Html.TextBoxFor(l => l.Paginas, "", new { @class = "form-control" })
+            </div>
+            <div>
+                <label style="color:limegreen;font-family:'Lucida Sans'">
+                    Autor
+                </label>
+                <label style="color:red;font-family:'Lucida Sans'">
+                    *
+                </label>
+                @Html.TextBoxFor(l => l.Autor, "", new { @class = "form-control" })
+                @Html.ValidationMessageFor(l => l.Autor, null, new { @class = "red" })
+            </div>
+            <br />
+            <div style="text-align:right;">
+                <input value="Guadar" class="btn btn-primary" type="submit" />
+            </div>
+            <div style="text-align:left">
+                <div class="btn btn-default">
+                    @Html.ActionLink("Volver a Lista", "Index")
+                </div>
+            </div>
+        </div>
+    </div>
+}

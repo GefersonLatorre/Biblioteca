@@ -1,0 +1,38 @@
+﻿@model List<Biblioteca.Models.ViewModels.ListaLibroVM>
+@{
+    ViewBag.Title = "Lista Libros";
+}
+
+<h2 style="margin-top: 100px; color: blue; font-family: Castellar;">@ViewBag.Title</h2>
+
+<div class="row" style="text-align:right;margin-bottom:10px;">
+    <a href="~/Libro/Nuevo" class="btn btn-success">Nuevo</a>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <table style="background-color:gray" class="table table-striped">
+            <tr style="color:darkorange;font-family:'Lucida Sans'">
+                <th>Titulo</th>
+                <th>Año</th>
+                <th>Genero</th>
+                <th>Paginas</th>
+                <th>Autor</th>
+                <th></th>
+            </tr>
+            @foreach (var item in Model)
+            {
+                <tr style="color:darkgreen">
+                    <td>@item.Titulo</td>
+                    <td>@item.Anio</td>
+                    <td>@item.Genero</td>
+                    <td>@item.Paginas</td>
+                    <td>@item.Autor</td>
+                    <td>
+                        <a class="btn btn-info" href="~/Libro/Editar/@item.Id">Editar</a>
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>
+

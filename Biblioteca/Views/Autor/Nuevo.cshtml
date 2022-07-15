@@ -1,0 +1,62 @@
+﻿@model Biblioteca.Models.ViewModels.AutorVM
+@{
+    ViewBag.Title = "Nuevo Autor";
+}
+
+<h2 style="margin-top: 100px; margin-bottom: 40px; color: limegreen; font-family: Castellar">@ViewBag.Title</h2>
+
+@using (Html.BeginForm("Nuevo", "Autor", FormMethod.Post))
+{
+    <div class="row">
+        <div class="col-md-12">
+            <div>
+                <label style="color:limegreen;font-family:'Lucida Sans'">
+                    Nombre
+                </label>
+                <label style="color:red;font-family:'Lucida Sans'">
+                    *
+                </label>
+                @Html.TextBoxFor(a => a.Nombre, "", new { @class = "form-control" })
+                @Html.ValidationMessageFor(a => a.Nombre, null, new { @class = "red" })
+            </div>
+            <div>
+                <label style="color:limegreen;font-family:'Lucida Sans'">
+                    Fecha de nacimiento
+                </label>
+                <label style="color:red;font-family:'Lucida Sans'">
+                    *
+                </label>
+                <br />
+                @Html.EditorFor(a => a.Fecha_Nacimiento, "", new { @class = "form-control" })
+                <br />
+                @Html.ValidationMessageFor(a => a.Fecha_Nacimiento, null, new { @class = "red" })
+            </div>
+            <div>
+                <label style="color:limegreen;font-family:'Lucida Sans'">
+                    Lugar de nacimiento
+                </label>
+                <label style="color:red;font-family:'Lucida Sans'">
+                    *
+                </label>
+                @Html.TextBoxFor(a => a.Lugar_Nacimiento, "", new { @class = "form-control" })
+                @Html.ValidationMessageFor(a => a.Lugar_Nacimiento, null, new { @class = "red" })
+            </div>
+            <div>
+                <label style="color:limegreen;font-family:'Lucida Sans'">
+                    Correo electronico
+                </label>
+                @Html.TextBoxFor(a => a.Correo, "", new { @class = "form-control" })
+                @Html.ValidationMessageFor(a => a.Correo, null, new { @class = "red" })
+            </div>
+            <br />
+            <div style="text-align:right;">
+                <input value="Guadar" class="btn btn-primary" type="submit" />
+            </div>
+            <div style="text-align:left">
+                <div class="btn btn-default">
+                    @Html.ActionLink("Volver a Lista", "Index")
+                </div>
+            </div>
+        </div>
+    </div>
+}

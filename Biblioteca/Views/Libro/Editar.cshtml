@@ -1,0 +1,64 @@
+﻿@model Biblioteca.Models.ViewModels.LibroVM
+@{
+    ViewBag.Title = "Editar Libro";
+}
+
+<h2 style="margin-top: 100px; margin-bottom: -20px; color: deepskyblue; font-family: Castellar;">@ViewBag.Title</h2>
+
+<div class="row">
+    <div class="col-md-12">
+        <h2 style="color:deepskyblue; font-family:Castellar;">
+            @Html.DisplayFor(l => l.Titulo, new { htmlAttributes = new { @class = "form-control" } }) - @Html.DisplayFor(l => l.Autor, new { htmlAttributes = new { @class = "form-control" } })
+        </h2>
+    </div>
+</div>
+
+<div style="text-align:right;">
+    <div class="btn btn-danger">
+        @Html.ActionLink("Eliminar", "Eliminar", new { id = Model.Id })
+    </div>
+</div>
+
+@using (Html.BeginForm("Editar", "Libro", FormMethod.Post))
+{
+    <div class="row">
+        <div class="col-md-12">
+            @Html.HiddenFor(l => l.Id)
+            @Html.HiddenFor(l => l.Titulo)
+            @Html.HiddenFor(l => l.Autor)
+            <div>
+                <label style="color:deepskyblue;font-family:'Lucida Sans'">
+                    Año
+                </label>
+                <label style="color:red;font-family:'Lucida Sans'">
+                    *
+                </label>
+                @Html.TextBoxFor(l => l.Anio, "", new { @class = "form-control" })
+                @Html.ValidationMessageFor(l => l.Anio, null, new { @class = "red" })
+            </div>
+            <div>
+                <label style="color:deepskyblue;font-family:'Lucida Sans'">
+                    Genero
+                </label>
+                @Html.TextBoxFor(l => l.Genero, "", new { @class = "form-control" })
+            </div>
+            <div>
+                <label style="color:deepskyblue;font-family:'Lucida Sans'">
+                    Paginas
+                </label>
+                @Html.TextBoxFor(l => l.Paginas, "", new { @class = "form-control" })
+            </div>
+            <br />
+            <div style="text-align:right;">
+                <input value="Guadar" class="btn btn-primary" type="submit" />
+            </div>
+            <div style="text-align:left">
+                <div class="btn btn-default">
+                    @Html.ActionLink("Volver a Lista", "Index")
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+

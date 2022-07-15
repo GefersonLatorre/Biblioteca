@@ -1,0 +1,39 @@
+﻿@model Biblioteca.Models.ViewModels.LibroVM
+@{
+    ViewBag.Title = "Eliminar Libro";
+}
+
+<div style="margin-left: 25%; margin-right: 25%; margin-top: 10%; padding-bottom: 3%; text-align: center; border-style: dashed solid; border-color: slategray">
+    <h2 style="color: red; font-family: Castellar;">@ViewBag.Title</h2>
+
+    <div class="row">
+        <div class="col-md-12">
+            <h2 style="color:red;font-family:Castellar;">
+                @Html.DisplayFor(l => l.Titulo, new { htmlAttributes = new { @class = "form-control" } }) - @Html.DisplayFor(l => l.Autor, new { htmlAttributes = new { @class = "form-control" } })
+            </h2>
+        </div>
+    </div>
+
+    <h3 style="color:red;font-family:'Lucida Sans'">Está seguro de eliminar este libro?</h3>
+
+    @using (Html.BeginForm("Eliminar", "Libro", FormMethod.Post))
+    {
+        <div class="row">
+            @Html.HiddenFor(l => l.Id)
+            @Html.HiddenFor(a => a.Titulo)
+            @Html.HiddenFor(a => a.Anio)
+            @Html.HiddenFor(a => a.Genero)
+            @Html.HiddenFor(a => a.Paginas)
+            @Html.HiddenFor(a => a.Autor)
+            <div style="text-align:center;">
+                <input style="margin-top: 30px;" value="Aceptar" class="btn btn-primary" type="submit" />
+                <br />
+                <div class="btn btn-default" style="margin-top: 30px;">
+                    @Html.ActionLink("Volver a Lista", "Index")
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+
